@@ -1,0 +1,250 @@
+<style>
+
+    /* RESIZERS CLASSES*/
+    .topnav {
+        background-color: #333333;
+        display: block;
+        height: 35px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #DDD;
+    }
+
+    .left{
+        background-color: #EEE;
+        position: absolute;
+        top: 35px;
+        bottom: 0;
+        left: 0;
+        width: 23%;
+        overflow: auto;
+    }
+    .right{
+        position: absolute;
+        top: 35px;
+        bottom: 0;
+        left: 23%; /* 200 + 6*/;
+        right: 0;
+        overflow: hidden;
+        color: #FFF;
+        
+    }
+    .top{
+        position: absolute;
+        top: 0;
+        bottom: 50%; /* 130 + 6 */
+        left: 0;
+        right: 0;
+        background-color: #444;
+        overflow: auto;
+    }
+    .down{
+        position: absolute;
+
+        height: 50%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: auto;
+        background-color: #777;
+    }
+    .sidebar-resizer {
+        background-color: #666;
+        position: absolute;
+        top: 35px;
+        bottom: 0;
+        left: 23%;
+        width: 6px;
+        cursor: e-resize;
+    }
+    .content-resizer {
+        position: absolute;
+        height: 6px;
+        bottom: 49%;
+        left: 0;
+        right: 0;
+        background-color: #666;
+        cursor: n-resize;
+    }
+    #sidebar-resizer:hover, #preview-resizer:hover {
+        background-color: #AAA;
+    }
+    /* END OF RSIZERS */
+
+
+</style>
+<script type="text/javascript" src="http://etoolset.localhost/api/3VJJW0V96DEOTN6KESO7UW/FD0UXBQBOIGJSYNHRVVUXA"></script>
+<script type="text/javascript">
+
+
+app.controller('MainCtrl',  ['$scope','$http', '$interval' , function ($scope, $http , $interval) {
+    $scope.content = 'Hello World';
+    $scope.general_tags =  [
+        { name: "Opera",              maker: "(Opera Software)" , ticked:true},
+        { name: "Internet Explorer",  maker: "(Microsoft)" , ticked:true},
+        { name: "Firefox",            maker: "(Mozilla Foundation)" , ticked:true},
+        { name: "Safari",             maker: "(Apple)" , ticked:true},
+    ]; 
+
+    $scope.facts = [
+        { name: "Opera",              maker: "(Opera Software)" },
+        { name: "Internet Explorer",  maker: "(Microsoft)"},
+        { name: "Firefox",            maker: "(Mozilla Foundation)" },
+        { name: "Safari",             maker: "(Apple)"},
+    ]; 
+
+    stop = $interval(function(){ 
+                          $http.post('/rest/tag', { 'task':'get_all_tags'}).then(
+                                function(response) {
+                                    $scope.general_tags = response.data.list;
+                                    console.log(response.data.list);
+                                }
+                          )
+                        }, 4000, 0);
+
+    $scope.add_new_tag = function(new_tag){
+        console.log(new_tag);
+        $http.post('/rest/tag', { 'task':'add_new_tag', 'new_tag':new_tag }).then(
+                                function(response) {
+                                    $scope.general_tags = response.data.list;
+                                    console.log(response.data.list);
+                                }
+                          );
+    }
+    $scope.delete_selected_tags = function(){
+        console.log($scope.output_general_tags);
+        $http.post('/rest/tag', { 'task':'delete_selected_tags', 'selected_tags': $scope.output_general_tags }).then(
+                                function(response) {
+                                    $scope.general_tags = response.data.list;
+                                    console.log(response.data.list);
+                                }
+                          );
+    }
+}]);
+
+
+    angular.module('mc.resizer', []).directive('resizer', function($document) {
+
+    return function($scope, $element, $attrs) {
+
+        $element.on('mousedown', function(event) {
+            event.preventDefault();
+
+            $document.on('mousemove', mousemove);
+            $document.on('mouseup', mouseup);
+        });
+
+        function mousemove(event) {
+
+            if ($attrs.resizer == 'vertical') {
+                // Handle vertical resizer
+                var x = event.pageX;
+
+                if ($attrs.resizerMax && x > $attrs.resizerMax) {
+                    x = parseInt($attrs.resizerMax);
+                }
+
+                $element.css({
+                    left: x + 'px'
+                });
+
+                $($attrs.resizerLeft).css({
+                    width: x + 'px'
+                });
+                $($attrs.resizerRight).css({
+                    left: (x + parseInt($attrs.resizerWidth)) + 'px'
+                });
+
+            } else {
+                // Handle horizontal resizer
+                var y = window.innerHeight - event.pageY;
+
+                $element.css({
+                    bottom: y + 'px'
+                });
+
+                $($attrs.resizerTop).css({
+                    bottom: (y + parseInt($attrs.resizerHeight)) + 'px'
+                });
+                $($attrs.resizerBottom).css({
+                    height: y + 'px'
+                });
+            }
+        }
+
+        function mouseup() {
+            $document.unbind('mousemove', mousemove);
+            $document.unbind('mouseup', mouseup);
+        }
+    };
+});
+
+</script>
+
+  <div ng-controller="MainCtrl">
+
+    <div id="topnav" class="topnav">Top navbar</div>
+   
+    <div id="sidebar" class="left">
+        <h3>Side navbar</h3>
+        <div id="top-" class="top"> 
+            <div     
+            isteven-multi-select
+            input-model="general_tags"
+            output-model="output_general_tags"
+            button-label="icon name"
+            item-label="icon name maker"
+            tick-property="ticked">       
+
+            </div> 
+            <div class="line ng-scope" style="position:inherit; bottom: 3px;" >
+            <input ng-model="new_tag" placeholder="Search..." class="inputFilter ng-pristine ng-valid ng-empty ng-touched" type="text"> 
+            <button type="button" class="clearButton" ng-click="add_new_tag(new_tag)"> ADD</button> 
+            <button type="button" class="helperButton ng-binding ng-scope" ng-click="delete_selected_tags()">✓&nbsp;&nbsp;Delete</button>
+            </div>
+
+        </div>
+        <div id="bottom-" class="down"> Down </div>
+
+        <div id="content-resizer"  class="content-resizer" 
+            resizer="horizontal" 
+            resizer-height="6" 
+            resizer-top="#top-" 
+            resizer-bottom="#bottom-">
+        </div>
+    </div>
+  
+    <div id="content" class="right">
+
+        <div id="top-content" class="top">
+            <div     
+            isteven-multi-select
+            input-model="facts"
+            output-model="output_facts"
+            button-label="icon name"
+            item-label="icon name maker"
+            tick-property="ticked">       
+
+            </div> 
+        </div>
+  
+        <div id="bottom-content" class="down">Bottom content</div>
+  
+        <div id="content-resizer" class="content-resizer" 
+            resizer="horizontal" 
+            resizer-height="6" 
+            resizer-top="#top-content" 
+            resizer-bottom="#bottom-content">
+        </div>
+    </div>
+  
+    <div id="sidebar-resizer" class="sidebar-resizer" 
+        resizer="vertical" 
+        resizer-width="6" 
+        resizer-left="#sidebar" 
+        resizer-right="#content"
+        resizer-max="400">
+    </div>
+    </div>
