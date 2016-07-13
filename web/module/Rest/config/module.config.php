@@ -23,12 +23,14 @@
         'controllers' => array(
             'invokables' => array(
                 'Rest\Controller\Tag' => 'Rest\Controller\TagController',
+                'Rest\Controller\Fact' => 'Rest\Controller\FactController',
             ),
         ),
-        // 'view_manager' => array(
-        //     'template_path_stack' => array(
-        //         __DIR__ . '/../view',
-        //     ),
-        // ),
+    'view_manager' => array(
+        'strategies' => array(
+           'ViewJsonStrategy',
+        ),
+    ),
+
     );
 ?>

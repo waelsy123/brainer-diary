@@ -9,23 +9,23 @@
         position: absolute;
         right: 0;
         top: 0;
-        background-color: #DDD;
+        background-color: rgb(59, 156, 59);
     }
 
     .left{
-        background-color: #EEE;
+        background-color: white;
         position: absolute;
         top: 35px;
         bottom: 0;
         left: 0;
-        width: 23%;
+        width: 380px;
         overflow: auto;
     }
     .right{
         position: absolute;
         top: 35px;
         bottom: 0;
-        left: 23%; /* 200 + 6*/;
+        left: 386px; /* 200 + 6*/;
         right: 0;
         overflow: hidden;
         color: #FFF;
@@ -34,78 +34,187 @@
     .top{
         position: absolute;
         top: 0;
-        bottom: 50%; /* 130 + 6 */
+        bottom: 22%; /* 130 + 6 */
         left: 0;
         right: 0;
-        background-color: #444;
+        background-color: white ;
         overflow: auto;
     }
     .down{
         position: absolute;
 
-        height: 50%;
+        height: 21%;
         bottom: 0;
         left: 0;
         right: 0;
         overflow: auto;
-        background-color: #777;
+        background-color: rgb(168, 224, 140);
     }
     .sidebar-resizer {
-        background-color: #666;
+        background-color: rgb(109, 141, 93);
         position: absolute;
         top: 35px;
         bottom: 0;
-        left: 23%;
+        left: 380px;
         width: 6px;
         cursor: e-resize;
     }
     .content-resizer {
         position: absolute;
         height: 6px;
-        bottom: 49%;
+        bottom: 21%;
         left: 0;
         right: 0;
-        background-color: #666;
+        background-color: rgb(109, 141, 93);
         cursor: n-resize;
     }
     #sidebar-resizer:hover, #preview-resizer:hover {
         background-color: #AAA;
     }
     /* END OF RSIZERS */
+    .ng-modal-overlay {
+      /* A dark translucent div that covers the whole screen */
+      position:absolute;
+      z-index:9999;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background-color:#000000;
+      opacity: 0.8;
+    }
+    .ng-modal-dialog {
+      /* A centered div above the overlay with a box shadow. */
+      z-index:10000;
+      position: absolute;
+      width: 586px; /* Default */
 
+      /* Center the dialog */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+
+      background-color: #F8F8F8;
+      box-shadow: 4px 4px 80px #000;
+    }
+    .ng-modal-dialog-content {
+/*      padding:10px;
+      text-align: left;*/
+    }
+
+    .myButton {
+    -moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+    box-shadow:inset 0px 1px 0px 0px #54a3f7;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #007dc1), color-stop(1, #0061a7));
+    background:-moz-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+    background:-webkit-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+    background:-o-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+    background:-ms-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+    background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1', endColorstr='#0061a7',GradientType=0);
+    background-color:#007dc1;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    border:1px solid #124d77;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:13px;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #154682;
+}
+.myButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7), color-stop(1, #007dc1));
+    background:-moz-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+    background:-webkit-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+    background:-o-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+    background:-ms-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+    background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1',GradientType=0);
+    background-color:#0061a7;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+    .btn-primary.gradient:active, .btn-primary.gradient.active {
+        background: -moz-linear-gradient(top,  #267c99 50%, #007299 50%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#267c99), color-stop(50%,#007299)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #267c99 50%,#007299 50%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #267c99 50%,#007299 50%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #267c99 50%,#007299 50%); /* IE10+ */
+        background: linear-gradient(to bottom,  #267c99 50%,#007299 50%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#267c99', endColorstr='#007299',GradientType=0 ); /* IE6-9 */
+    }
 
 </style>
 <script type="text/javascript" src="http://etoolset.localhost/api/3VJJW0V96DEOTN6KESO7UW/FD0UXBQBOIGJSYNHRVVUXA"></script>
 <script type="text/javascript">
-
+function hi(){
+    alert("hi");
+}
+app.directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with the template below
+    transclude: true, // we want to insert custom content inside the directive
+    link: function(scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+        scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+        scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function() {
+        console.log("hide called!");
+        scope.show = false;
+      };
+    },
+    template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
+  };
+});
 
 app.controller('MainCtrl',  ['$scope','$http', '$interval' , function ($scope, $http , $interval) {
+    $scope.modalShown = false;
+
     $scope.content = 'Hello World';
-    $scope.general_tags =  [
-        { name: "Opera",              maker: "(Opera Software)" , ticked:true},
-        { name: "Internet Explorer",  maker: "(Microsoft)" , ticked:true},
-        { name: "Firefox",            maker: "(Mozilla Foundation)" , ticked:true},
-        { name: "Safari",             maker: "(Apple)" , ticked:true},
-    ]; 
+    $scope.general_tags =  [];
+    $scope.facts = []; 
+    $scope.intersection_facts = []; 
 
-    $scope.facts = [
-        { name: "Opera",              maker: "(Opera Software)" },
-        { name: "Internet Explorer",  maker: "(Microsoft)"},
-        { name: "Firefox",            maker: "(Mozilla Foundation)" },
-        { name: "Safari",             maker: "(Apple)"},
-    ]; 
+    $http.post('/rest/tag', { 'task':'get_all_tags'}).then(
+        function(response) {
+            $scope.general_tags = response.data.list;
+            console.log(response.data.list);
+        }
+    )
 
-    stop = $interval(function(){ 
-                          $http.post('/rest/tag', { 'task':'get_all_tags'}).then(
-                                function(response) {
-                                    $scope.general_tags = response.data.list;
-                                    console.log(response.data.list);
-                                }
-                          )
-                        }, 4000, 0);
+    $http.post('/rest/fact', { 'task':'get_all_intersection_facts', 'selected_tags': $scope.output_general_tags}).then(
+        function(response) {
+            $scope.intersection_facts = response.data.list;
+            console.log(response.data.list);
+        }
+    )
+
+    $http.post('/rest/fact', { 'task':'get_all_facts', 'selected_tags': $scope.output_general_tags}).then(
+        function(response) {
+            $scope.facts = response.data.list;
+            console.log(response.data.list);
+        }
+    )
 
     $scope.add_new_tag = function(new_tag){
-        console.log(new_tag);
+        // console.log(new_tag);
         $http.post('/rest/tag', { 'task':'add_new_tag', 'new_tag':new_tag }).then(
                                 function(response) {
                                     $scope.general_tags = response.data.list;
@@ -113,11 +222,58 @@ app.controller('MainCtrl',  ['$scope','$http', '$interval' , function ($scope, $
                                 }
                           );
     }
+    $scope.add_new_fact = function(new_fact){
+        console.log(new_fact);
+        $http.post('/rest/fact', { 'task':'add_new_fact', 'new_fact':new_fact , 'selected_tags': $scope.output_general_tags }).then(
+                                function(response) {
+                                    // if(response.data.list['msg'] ) alert(response.data.list['msg'] );
+                                    // else{
+                                        $scope.facts = response.data.list;
+                                        console.log(response.data.list);
+                                        $scope.modalShown = false ; 
+                                    // }
+                                }
+                          );
+    }
+
+    $scope.get_all_facts = function(){
+        console.log();
+        $http.post('/rest/fact', { 'task':'get_all_facts', 'selected_tags': $scope.output_general_tags }).then(
+                                function(response) {
+                                    // if(response.data.list['msg'] ) alert(response.data.list['msg'] );
+                                    // else{
+                                        $scope.facts = response.data.list;
+                                        console.log(response.data.list);
+                                    // }
+                                }
+                          );
+    }
+
+    $scope.get_all_intersection_facts = function(){
+        console.log();
+        $http.post('/rest/fact', { 'task':'get_all_intersection_facts', 'selected_tags': $scope.output_general_tags}).then(
+            function(response) {
+                $scope.intersection_facts = response.data.list;
+                console.log(response.data.list);
+            }
+        )
+    }
+
+
     $scope.delete_selected_tags = function(){
         console.log($scope.output_general_tags);
         $http.post('/rest/tag', { 'task':'delete_selected_tags', 'selected_tags': $scope.output_general_tags }).then(
                                 function(response) {
                                     $scope.general_tags = response.data.list;
+                                    console.log(response.data.list);
+                                }
+                          );
+    }
+    $scope.delete_selected_facts = function(){
+        console.log($scope.output_general_tags);
+        $http.post('/rest/fact', { 'task':'delete_selected_facts', 'selected_tags': $scope.output_general_tags, 'selected_facts': $scope.output_facts }).then(
+                                function(response) {
+                                    $scope.facts = response.data.list;
                                     console.log(response.data.list);
                                 }
                           );
@@ -183,54 +339,96 @@ app.controller('MainCtrl',  ['$scope','$http', '$interval' , function ($scope, $
 
 </script>
 
-  <div ng-controller="MainCtrl">
+    
+<div ng-controller="MainCtrl">
 
-    <div id="topnav" class="topnav">Top navbar</div>
+    <!-- NEW STORY POP-UP -->
+    <modal-dialog show='modalShown' width='840px' height='586px'>
+        <div style="position: absolute; top :4px; bottom:4px; left: 4px;  ">
+            <div style="height: 100%; overflow-y:auto; width: 293px; ">
+                <div isteven-multi-select
+                        input-model="general_tags"
+                        output-model="output_tags_new_fact"
+                        button-label="icon name"
+                        item-label="icon name maker"
+                        tick-property="ticked">       
+                </div> 
+            </div>
+        </div>
+        <div style="top: 2px; bottom: 67px; left: 300px; right: 2px; position: absolute;">
+            <textarea ng-model="new_fact" style="resize: none; width: 100%; height: 100%; "></textarea>
+        </div>
+        <button class="btn btn-primary btn-lg gradient"  style="position: absolute; right: 10px; bottom: 12px;" type="button" class="clearButton" ng-click="add_new_fact(new_fact)">Story</button> 
+
+    </modal-dialog>
+
+
+
+
+    <!-- Menu -->
+    <div id="topnav" class="topnav">
+        <div style="padding :5px;">
+            <a href="/register" style="color : rgb(0, 16, 140);">Dashboard</a> - 
+            <a href="/register" style="color : rgb(0, 16, 140);">Login</a> - 
+            <a href="/register" style="color : rgb(0, 16, 140);">Register</a>
+        </div>
+        <button type="button" class="myButton" style="position: absolute; top:0px ; right: 10px;" ng-click="modalShown=true;">Story</button> 
+        <button type="button" class="myButton"  style="position: absolute; top:0px;right: 100px;" ng-click="delete_selected_facts()">✓&nbsp;&nbsp;Delete</button>
+    </div>
    
+   <!-- GENERAL TAGS  -->
     <div id="sidebar" class="left">
         <h3>Side navbar</h3>
-        <div id="top-" class="top"> 
-            <div     
-            isteven-multi-select
-            input-model="general_tags"
-            output-model="output_general_tags"
-            button-label="icon name"
-            item-label="icon name maker"
-            tick-property="ticked">       
-
-            </div> 
-            <div class="line ng-scope" style="position:inherit; bottom: 3px;" >
-            <input ng-model="new_tag" placeholder="Search..." class="inputFilter ng-pristine ng-valid ng-empty ng-touched" type="text"> 
-            <button type="button" class="clearButton" ng-click="add_new_tag(new_tag)"> ADD</button> 
-            <button type="button" class="helperButton ng-binding ng-scope" ng-click="delete_selected_tags()">✓&nbsp;&nbsp;Delete</button>
+        <div id="top-" class="top" style="height: 100%;"> 
+            <div   class="top"  style="top:26px; bottom: 0px; ">
+                <div     
+                isteven-multi-select
+                input-model="general_tags"
+                output-model="output_general_tags"
+                button-label="icon name"
+                item-label="icon name maker"
+                tick-property="ticked">       
+                </div> 
             </div>
-
+            <div style="height:35px; bottom: 0px; background-color: white;">
+                <div class="line ng-scope" style="position:inherit; bottom: 3px;" >
+                <input ng-model="new_tag" placeholder="New tag.." class="inputFilter ng-pristine ng-valid ng-empty ng-touched" type="text"> 
+                <button type="button" class="clearButton" ng-click="add_new_tag(new_tag)"> ADD</button> 
+                <button type="button" class="helperButton ng-binding ng-scope" ng-click="delete_selected_tags()">✓&nbsp;&nbsp;Delete</button>
+                <button type="button" class="clearButton" ng-click="get_all_facts();get_all_intersection_facts();"> Refresh</button> 
+                </div>
+            </div>
         </div>
-        <div id="bottom-" class="down"> Down </div>
 
-        <div id="content-resizer"  class="content-resizer" 
-            resizer="horizontal" 
-            resizer-height="6" 
-            resizer-top="#top-" 
-            resizer-bottom="#bottom-">
-        </div>
     </div>
   
     <div id="content" class="right">
 
         <div id="top-content" class="top">
+            <div isteven-multi-select
+                    input-model="facts"
+                    output-model="output_facts"
+                    button-label="icon name"
+                    item-label="icon name maker"
+                    tick-property="ticked">       
+            </div> 
+
+       <!--      <div class="line ng-scope" style="position:inherit; bottom: 3px;" >
+            </div>
+ -->
+        </div>
+  
+        <div id="bottom-content" class="down">
             <div     
             isteven-multi-select
-            input-model="facts"
-            output-model="output_facts"
+            input-model="intersection_facts"
+            output-model="output_intersection_facts"
             button-label="icon name"
             item-label="icon name maker"
             tick-property="ticked">       
 
             </div> 
         </div>
-  
-        <div id="bottom-content" class="down">Bottom content</div>
   
         <div id="content-resizer" class="content-resizer" 
             resizer="horizontal" 

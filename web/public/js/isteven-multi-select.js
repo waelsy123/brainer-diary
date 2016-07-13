@@ -409,7 +409,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
                 // if an item (not group marker) is clicked
                 else {
-
+                    // console.log()
                     // If it's single selection mode
                     if ( typeof attrs.selectionMode !== 'undefined' && attrs.selectionMode.toUpperCase() === 'SINGLE' ) {
                         
