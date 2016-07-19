@@ -29,12 +29,30 @@
     </head>
 
     <body ng-app="myApp" >
+    <div>
+        <!-- Menu -->
+        <div id="topnav" class="topnav">
+            <div style="padding :5px;">
+                <?php if($this->identity ) : ?>
+                    <a href="/" style="color : rgb(0, 16, 140);">Dashboard</a> - 
+                    <a href="/auth/logout" style="color : rgb(0, 16, 140);">Logout</a>
+                <?php else: ?>        
+                    <a href="/auth/register" style="color : rgb(0, 16, 140);">Login</a> - 
+                    <a href="/auth/register" style="color : rgb(0, 16, 140);">Register</a>
+                <?php endif; ?>
 
+            </div>
+            <button type="button" class="myButton" style="position: absolute; top:0px ; right: 10px;" ng-click="modalShown=true;">Story</button> 
+            <button type="button" class="myButton"  style="position: absolute; top:0px;right: 100px;" ng-click="delete_selected_facts()">✓&nbsp;&nbsp;Delete</button>
+        </div>
+        <!-- End Menu -->
+
+    </div>
         <div class="container">
             <?php echo $this->content; ?>
             <hr>
             <footer>
-              <!--   <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p> -->
+
             </footer>
         </div> <!-- /container -->
         <?php //echo $this->inlineScript() ?>

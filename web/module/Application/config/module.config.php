@@ -52,22 +52,39 @@ return array(
                     ),
                 ),
             ),
+        
+
+        'auth' => array(
+         'type'    => 'segment',
+         'options' => array(
+             'route'    => '/auth[/:action]',
+             'constraints' => array(
+                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+             ),
+             'defaults' => array(
+                 'controller' => 'Application\Controller\auth',
+                 'action'     => 'index',
+             ),
+         ),
         ),
 
-        'rest' => array(
-                'type' => 'Segment',
-                'may_terminate' => true,
-                'options' => array(
-                    'route'    => '/rest/:controller',
-                    'constraints' => array(
-                                'controller'=> '[a-zA-Z0-9_-][a-zA-Z0-9_-]*'
-                        ),
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Rest\Controller',
-                        'module'       => 'rest'
-        ))),
+        'register' => array(
+            'type'    => 'Zend\Mvc\Router\Http\Literal',
+            'may_terminate' => true,
+            'options' => array(
+                'route'    => '/auth/register',
+                'defaults' => array(
+                    'action' => 'register',
+                    'controller' => 'Auth',
+                    '__NAMESPACE__' => 'Application\Controller',
+                    'module'       => 'Application',
 
+                ),
+            ),
+        ),
+        
     ),
+),
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -90,6 +107,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => Controller\IndexController::class,
+            'Application\Controller\Auth' => Controller\AuthController::class,
         ),
     ),
     'view_manager' => array(

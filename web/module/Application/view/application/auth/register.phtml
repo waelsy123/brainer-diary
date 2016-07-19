@@ -1,0 +1,36 @@
+
+<link href="/css/style_login.css" rel='stylesheet' type='text/css' />
+<!--web-fonts-->
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+	document.getElementyByID('body').background-color= 'orange' ; 
+</script>
+
+<div height='100%' width='100%' background-color='orange'>
+	<h1>User Login</h1>
+	<div class="avtar">
+		<img src="/img/avtar.png" />
+	</div>
+		<div class="login-form">
+			<p>New user?<a href="#">Register here!</a></p>
+				<form method="post" action="<?= $this->action; ?>">
+					<div class="form-text">
+						<input name="login[username]" type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" >
+						<input name="login[password]" type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><br>
+						<input type="submit" value="Login">
+					</div>
+				</form>
+				<form method="post" action="<?= $this->action; ?>">
+					<hr></hr>
+					<div class="form-text">
+						<input name="register[username]" type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" >
+						<input name="register[password]" type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+						<input name="register[firstname]" type="text" value="Firstname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Firstname';}">
+						<input name="register[lastname]" type="text" value="Lastname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Lastname';}">
+						<input name="register[email]" type="text" value="Email@example.com" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email@example.com';}">
+					</div>
+						<input type="submit" value="Register">
+				</form>
+
+		</div>
+</div>
