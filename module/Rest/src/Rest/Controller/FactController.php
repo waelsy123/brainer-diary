@@ -18,7 +18,7 @@ class FactController extends AbstractRestfulController
 
 		$config = $this->getServiceLocator()->get('Config');
 		$conn = mysql_connect($config['db']['host'],$config['db']['username'] , $config['db']['password']);
-		mysql_select_db( "brainer" ) or die( 'Error'. mysql_error() );
+		mysql_select_db( "darflnvqfnhgbc" ) or die( 'Error'. mysql_error() );
 
 		$facts = array();
 
